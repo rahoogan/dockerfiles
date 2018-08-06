@@ -1,0 +1,8 @@
+docker run \
+  -itd \
+  -e "HOME_DIR=/home/$USER_ID" \
+  -e "USER_ID=$USER_ID" \
+  -v /home/$USER_ID/.ssh/id_rsa:/home/$USER_ID/.ssh/id_rsa:ro \
+  -v entrypoint.sh:/home/$USER_ID/entrypoint.sh \
+  --user $USER_ID \
+  479d71bea65a

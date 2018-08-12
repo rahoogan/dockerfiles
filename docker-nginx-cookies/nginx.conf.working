@@ -1,0 +1,25 @@
+events {
+  worker_connections  4096;  ## Default: 1024
+}
+
+http {
+
+  server {  
+
+    location /service1 {
+        resolver 127.0.0.11;
+
+        set $upstream http://service1:5000;
+
+        proxy_pass    $upstream; 
+    }
+    
+    location /service2 {
+        resolver 127.0.0.11;
+
+        set $upstream2 http://service2:80;
+
+        proxy_pass    $upstream2; 
+    }
+  }
+}

@@ -1,0 +1,27 @@
+events {
+  worker_connections 4096;
+}
+
+http {
+upstream service1 {
+  server service1:5000;
+}
+
+upstream service2 {
+  server service2:80;
+}
+
+server {
+  resolver 127.0.0.11 valid=30s;
+
+  location ^~ /service1 {
+      set $upstream_service1 http://service1:5000;
+      proxy_pass $upstream_service1;
+  }
+
+  location ^~ /service2/ {
+      set $upstream_service2 http://service2:80;
+      proxy_pass $upstream_service2;
+  }
+}
+}

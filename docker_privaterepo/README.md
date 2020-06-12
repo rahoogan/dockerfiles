@@ -1,3 +1,5 @@
+# Git Private Repo
+
 This repo is based on an answer i provided on SO: https://stackoverflow.com/questions/51497325/pull-private-git-repo-in-docker-container/51580779#51580779
 
 This allows you to automatically instantiate a private remote git repo into a container using the SSH (private key) method.
